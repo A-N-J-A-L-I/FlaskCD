@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+	{% block title %}
+	<title>TODO PY</title>
+	{% endblock %}
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1><a href="/">TODO-PY</a></h1>
+		</div>
+	</header>
+	<div class="container">
+	{% block body %}
+	{% endblock %}
+	</div>
+</body>
+</html>
