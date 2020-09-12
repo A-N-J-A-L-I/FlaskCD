@@ -7,6 +7,14 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from datetime import datetime
 import math,os
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
+
+sentry_sdk.init(
+    dsn="https://ba4d5442b8234034a884ea4604a00960@o447117.ingest.sentry.io/5426733",
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=1.0
+)
 
 # Init flask
 app = Flask(__name__)
@@ -64,6 +72,10 @@ def index():
         all_tasks = Task.query.all()
         return render_template('index.html', t = all_tasks)
         return "hello world"
+
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
 
 
 # Create a new task
