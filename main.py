@@ -70,6 +70,7 @@ def IDgenerator():
 @app.route('/')
 def index():
         all_tasks = Task.query.all()
+	1/0	
         return render_template('index.html', t = all_tasks)
         return "hello world"
 
